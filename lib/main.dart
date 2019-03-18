@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final title = 'Fade in images';
+    final title = 'Cached Images';
 
     return MaterialApp(
       title: title,
@@ -15,9 +15,10 @@ class MyApp extends StatelessWidget {
           title: Text(title),
         ),
         body: Center(
-          child: FadeInImage.assetNetwork(
-            placeholder: 'assets/loading.gif',
-            image: 'https://picsum.photos/250?image=9',
+          child: CachedNetworkImage(
+            imageUrl: 'https://picsum.photos/250?image=9',
+            placeholder: (context, url) => CircularProgressIndicator(),
+            errorWidget: (context, url, error) => Icon(Icons.error),
           ),
         ),
       ),
