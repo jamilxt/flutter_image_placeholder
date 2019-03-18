@@ -14,16 +14,11 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: Stack(
-          children: <Widget>[
-            Center(child: CircularProgressIndicator()),
-            Center(
-              child: FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: 'https://picsum.photos/250?image=9',
-              ),
-            ),
-          ],
+        body: Center(
+          child: FadeInImage.assetNetwork(
+            placeholder: 'assets/loading.gif',
+            image: 'https://picsum.photos/250?image=9',
+          ),
         ),
       ),
     );
